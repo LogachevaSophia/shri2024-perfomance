@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from "react";
 
 
 export const  Event = (props) =>  {
-    const ref = useRef();
+    const ref = useRef(); 
 
     const { onSize } = props;
 
