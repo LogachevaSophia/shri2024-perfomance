@@ -7,7 +7,6 @@ export const  Event = (props) =>  {
     const { onSize } = props;
 
     useEffect(() => {
-        console.log('HI')
         const width = ref.current.offsetWidth;
         const height = ref.current.offsetHeight;
         if (onSize) {
