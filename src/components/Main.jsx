@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Event } from './Event.jsx'
 import { TABS, TABS_KEYS } from '../constants.jsx';
 
@@ -13,7 +13,7 @@ export const Main = () =>  {
             initedRef.current = true;
             setActiveTab(new URLSearchParams(location.search).get('tab') || 'all');
         }
-    });
+    },[activeTab, location.search, initedRef]);
 
     const onSelectInput = event => {
         setActiveTab(event.target.value);
@@ -26,13 +26,13 @@ export const Main = () =>  {
 
     useEffect(() => {
         const sumWidth = sizes.reduce((acc, item) => acc + item.width, 0);
-        const sumHeight = sizes.reduce((acc, item) => acc + item.height, 0);
+    //    const sumHeight = sizes.reduce((acc, item) => acc + item.height, 0);
 
         const newHasRightScroll = sumWidth > ref.current.offsetWidth;
         if (newHasRightScroll !== hasRightScroll) {
             setHasRightScroll(newHasRightScroll);
         }
-    });
+    }, [sizes]);
 
     const onArrowCLick = () => {
         const scroller = ref.current.querySelector('.section__panel:not(.section__panel_hidden)');

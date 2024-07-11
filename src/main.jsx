@@ -9,7 +9,6 @@ ReactDOM.createRoot(document.getElementById('app')).render(
     <React.StrictMode>
         <>
             <Header/>
-            <Header/>
             <Main />
         </>
     </React.StrictMode>,
