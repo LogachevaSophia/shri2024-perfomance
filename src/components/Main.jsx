@@ -13,7 +13,7 @@ export const Main = () => {
             initedRef.current = true;
             setActiveTab(new URLSearchParams(location.search).get('tab') || 'all');
         }
-    });
+    }, []);
 
     const onSelectInput = event => {
         setActiveTab(event.target.value);
@@ -22,17 +22,17 @@ export const Main = () => {
     let sizes = [];
     const onSize = size => {
         sizes = [...sizes, size];
-    };
+    };  
 
     useEffect(() => {
         const sumWidth = sizes.reduce((acc, item) => acc + item.width, 0);
-        const sumHeight = sizes.reduce((acc, item) => acc + item.height, 0);
+        // const sumHeight = sizes.reduce((acc, item) => acc + item.height, 0);
 
         const newHasRightScroll = sumWidth > ref.current.offsetWidth;
         if (newHasRightScroll !== hasRightScroll) {
             setHasRightScroll(newHasRightScroll);
         }
-    });
+    }, [sizes]);
 
     const onArrowCLick = () => {
         const scroller = ref.current.querySelector('.section__panel:not(.section__panel_hidden)');
